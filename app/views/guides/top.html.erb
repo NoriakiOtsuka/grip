@@ -1,0 +1,25 @@
+<div class="container">
+
+	<!-- Search Column -->
+	<div class="col-xs-3">
+	</div>
+
+	<!-- Guide Registration Information -->
+	<div class="col-xs-9">
+		<div class="row">
+			<h4><%= link_to "スケジュールの確認", guide_schedules_path %></h4>
+		</div>
+		<div class="row">
+			<h3>ガイド一覧(全<%= @guides.count %>人)</h3>
+		</div>
+		<div>
+			<% @guides.each do |guide| %>
+				<%= link_to guide_guide_path(guide) do %>
+					<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+					<%= guide.first_name %><%= guide.last_name %>
+				<% end %>
+				<%= guide.region %>
+			<% end %>
+		</div>
+	</div>
+</div>

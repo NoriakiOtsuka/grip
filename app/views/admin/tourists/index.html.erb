@@ -1,0 +1,35 @@
+<div class="container">
+
+	<!-- Search Column -->
+	<div class="col-xs-3">
+	</div>
+
+	<!-- Tourist Registration Information -->
+	<div class="col-xs-9">
+		<div class="row">
+			<h3>観光客一覧(全<%= @tourists.count %>人)(admin)</h3>
+		</div>
+		<div class="row">
+			<table class="table table-bordered table-inberse">
+				<thead>
+					<th width = "200">観光客ID</th>
+					<th width = "200">氏名(ガイド)</th>
+					<th width = "200">メールアドレス</th>
+					<th width = "200">ステータス</th>
+				</thead>
+				<% @tourists.each do |tourist| %>
+					<tbody>
+						<td><%= tourist.id %></td>
+						<td>
+							<%= link_to admin_tourist_path(tourist) do %>
+								<%= tourist.last_name %> <%= tourist.first_name %>
+							<% end %>
+						</td>
+						<td><%= tourist.email %></td>
+						<td><%= tourist.status %></td>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

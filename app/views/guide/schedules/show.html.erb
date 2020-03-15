@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<h3>スケジュール詳細(guide)</h3>
+	</div>
+	<div class="row">
+		<div>
+			<% if @schedule.status == "依頼中" %>
+				<h4><%= @tourist.last_name %> <%= @tourist.first_name %>さんからの依頼です。</h4>
+			<% elsif @schedule.status == "実施不可" %>
+				<h4><%= @tourist.last_name %> <%= @tourist.first_name %>さんの依頼は断りました。</h4>
+			<% elsif @schedule.status == "実施予定" %>
+				<h4>あなたの担当は、<%= @tourist.last_name %> <%= @tourist.first_name %>さんです。</h4>
+			<% end %>
+		</div>
+		<div>予定日時<%= @schedule.plan %></div>
+		<%= form_for(@tourist) do |f| %>
+			<div>
+				<%= attachment_image_tag(@tourist, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">性別</td>
+					<td><%= @tourist.gender %></td>
+				</tr>
+				<tr>
+					<td class="info">国籍</td>
+					<td><%= @tourist.nationality %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= @tourist.phone %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= @tourist.email %></td>
+				</tr>
+			</table>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= link_to "一覧に戻る", guide_schedules_path, class: "btn btn-primary btn-lg center-block" %>
+	</div>
+	<div>
+		<div class="row">
+			<%= form_for(@schedule, url: {controller: "guide/schedules", action: :update}) do |f| %>
+				<%= f.hidden_field :plan, :value => @schedule.plan %>
+				<%= f.hidden_field :status, {value: "実施予定"} %>
+				<%= f.submit "ガイドを引き受ける", class: "btn btn-primary btn-lg center-block" %>
+			<% end %>
+			<%= form_for(@schedule, url: {controller: "guide/schedules", action: :update}) do |f| %>
+				<%= f.hidden_field :plan, :value => @schedule.plan %>
+				<%= f.hidden_field :status, {value: "実施不可"} %>
+				<%= f.submit "ガイドを辞退する", class: "btn btn-warning btn-lg center-block" %>
+		  <% end %>
+	</div>
+</div>

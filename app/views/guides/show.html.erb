@@ -1,0 +1,60 @@
+<div class="container">
+
+	<!-- Guide Pfofile -->
+	<div class="col-xs-3">
+		<div>
+			<%= attachment_image_tag(current_guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+		</div>
+		<section>
+			<h4><%= current_guide.first_name %> <%= current_guide.last_name %></h4>
+		</section>
+		<section>
+			<p>Introduction</p>
+			<h5><%= current_guide.introduction %></h5>
+		</section>
+		<section>
+			<p>Region</p>
+			<h5><%= current_guide.region %></h5>
+		</section>
+	</div>
+
+	<!-- Guide Registration Information -->
+	<div class="col-xs-9">
+		<div class="row">
+			<h3>マイページ(guide)</h3>
+		</div>
+		<div class="row">
+			<h4>登録情報</h4>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">氏名</td>
+					<td><%= current_guide.first_name %> <%= current_guide.last_name %></td>
+				</tr>
+				<tr>
+					<td class="info">生年月日</td>
+					<td><%= current_guide.birthday %></td>
+				</tr>
+				<tr>
+					<td class="info">性別</td>
+					<td><%= current_guide.gender %></td>
+				</tr>
+				<tr>
+					<td class="info">住所</td>
+					<td><%= current_guide.address %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= current_guide.phone %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= current_guide.email %></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<%= link_to "編集する", edit_guide_path, class: "btn btn-primary btn-lg center-block" %>
+			<%= link_to "パスワードを変更する",new_guide_password_path(current_guide), class: "btn btn-warning btn-lg center-block" %>
+		</div>
+	</div>
+</div>

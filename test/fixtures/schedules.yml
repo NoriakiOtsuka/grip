@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tourist_id: 1
+  guide_id: 1
+  plan: 2020-03-09
+  status: 1
+
+two:
+  tourist_id: 1
+  guide_id: 1
+  plan: 2020-03-09
+  status: 1

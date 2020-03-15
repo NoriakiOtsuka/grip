@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<h3>編集ページ(tourist)</h3>
+	</div>
+	<div class="row">
+		<h4>登録情報編集</h4>
+		<%= form_for(@tourist, url: {controller: "admin/tourists", action: :update}) do |f| %>
+			<div>
+				<%= f.attachment_field :profile_image, class: "profile_image" %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">観光客ID</td>
+					<td><%= @tourist.id %></td>
+				</tr>
+				<tr>
+					<td class="info">氏名</td>
+					<td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %> <%= f.text_field :first_name, autocomplete: "first_name" %></td>
+				</tr>
+				<tr>
+					<td class="info">生年月日</td>
+					<td><%= f.date_field :birthday, autocomplete: "birthday" %></td>
+				</tr>
+				<tr>
+					<td class="info">性別</td>
+					<td>
+						<%= f.radio_button :gender, :male %>男性
+						<%= f.radio_button :gender, :female %>女性
+					</td>
+				</tr>
+				<tr>
+					<td class="info">国籍</td>
+					<td><%= f.text_field :nationality, autocomplete: "nationality" %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= f.text_field :phone, autocomplete: "phone" %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= f.email_field :email, autocomplete: "email" %></td>
+				</tr>
+				<tr>
+					<td class="info">会員ステータス</td>
+					<td>
+						<%= f.radio_button :status, "有効" %>有効
+						<%= f.radio_button :status, "退会" %>退会
+					</td>
+				</tr>
+			</table>
+			<div>
+				<%= f.submit "編集内容を保存する", class: "btn btn-primary btn-lg center-block" %>
+			</div>
+		<% end %>
+	</div>
+</div>

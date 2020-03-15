@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  tourist_id: 1
+  guide_id: 1
+
+two:
+  comment: MyText
+  tourist_id: 1
+  guide_id: 1

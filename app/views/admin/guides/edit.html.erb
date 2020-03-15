@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row">
+		<h3>編集ページ(guide)</h3>
+	</div>
+	<div class="row">
+		<h4>登録情報編集</h4>
+		<%= form_for(@guide, url: {controller: "admin/guides", action: :update}) do |f| %>
+			<div>
+				<%= f.attachment_field :profile_image, class: "profile_image" %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">ガイドID</td>
+					<td><%= @guide.id %></td>
+				</tr>
+				<tr>
+					<td class="info">氏名</td>
+					<td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %> <%= f.text_field :last_name, autocomplete: "last_name" %></td>
+				</tr>
+				<tr>
+					<td class="info">生年月日</td>
+					<td><%= f.date_field :birthday, autocomplete: "birthday" %></td>
+				</tr>
+				<tr>
+					<td class="info">性別</td>
+					<td>
+						<%= f.radio_button :gender, :male %>男性
+						<%= f.radio_button :gender, :female %>女性
+					</td>
+				</tr>
+				<tr>
+					<td class="info">住所</td>
+					<td><%= f.text_field :address, autocomplete: "address" %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= f.text_field :phone, autocomplete: "phone" %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= f.email_field :email, autocomplete: "email" %></td>
+				</tr>
+				<tr>
+					<td class="info">地域</td>
+					<td><%= f.text_field :region, autocomplete: "region" %>
+					</td>
+				</tr>
+				<tr>
+					<td class="info">会員ステータス</td>
+					<td>
+						<%= f.radio_button :status, "有効" %>有効
+						<%= f.radio_button :status, "退会" %>退会
+					</td>
+				</tr>
+			</table>
+			<div>
+				<%= f.submit "編集内容を保存する", class: "btn btn-primary btn-lg center-block" %>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,109 @@
+<div class="container">
+	<div class="row">
+		<h3>スケジュール詳細(tourist)</h3>
+	</div>
+	<div class="row">
+		<div>
+			<% if @schedule.status == "依頼中" %>
+				<h4>ステータス：依頼中</h4>
+			<% elsif @schedule.status == "実施不可" %>
+				<h4>ステータス：実施不可</h4>
+			<% elsif @schedule.status == "実施予定" %>
+				<h4>ステータス：実施予定</h4>
+			<% elsif @schedule.status == "実施済み" %>
+				<h4>ステータス：実施済み</h4>
+			<% end %>
+		</div>
+
+		<h3>スケジュール詳細画面</h3>
+		<div>予定日時<%= @schedule.plan %></div>
+
+		<!-- 観光客情報 -->
+		<%= form_for(@tourist) do |f| %>
+			<div>
+				<%= attachment_image_tag(@tourist, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<thead>
+					<th>観光客</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="info">ID</td>
+						<td><%= @tourist.id %></td>
+					</tr>
+					<tr>
+						<td class="info">氏名</td>
+						<td><%= @tourist.last_name %> <%= @tourist.first_name %></td>
+					</tr>
+					<tr>
+						<td class="info">生年月日</td>
+						<td><%= @tourist.birthday %></td>
+					</tr>
+					<tr>
+						<td class="info">性別</td>
+						<td><%= @tourist.gender %></td>
+					</tr>
+					<tr>
+						<td class="info">国籍</td>
+						<td><%= @tourist.nationality %></td>
+					</tr>
+					<tr>
+						<td class="info">電話番号</td>
+						<td><%= @tourist.phone %></td>
+					</tr>
+					<tr>
+						<td class="info">メールアドレス</td>
+						<td><%= @tourist.email %></td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+
+		<!-- ガイド情報 -->
+		<%= form_for(@guide) do |f| %>
+			<div>
+				<%= attachment_image_tag(@guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<thead>
+					<th>ガイド</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="info">ID</td>
+						<td><%= @guide.id %></td>
+					</tr>
+					<tr>
+						<td class="info">氏名</td>
+						<td><%= @guide.first_name %> <%= @guide.last_name %></td>
+					</tr>
+					<tr>
+						<td class="info">生年月日</td>
+						<td><%= @guide.birthday %></td>
+					</tr>
+					<tr>
+						<td class="info">性別</td>
+						<td><%= @guide.gender %></td>
+					</tr>
+					<tr>
+						<td class="info">住所</td>
+						<td><%= @guide.address %>
+					</td>
+					</tr>
+					<tr>
+						<td class="info">電話番号</td>
+						<td><%= @guide.phone %></td>
+					</tr>
+					<tr>
+						<td class="info">メールアドレス</td>
+						<td><%= @guide.email %></td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= link_to "一覧へ戻る", admins_top_path, class: "btn btn-primary btn-lg center-block" %>
+	</div>
+</div>

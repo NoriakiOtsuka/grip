@@ -1,0 +1,37 @@
+<div class="container">
+
+	<!-- Search Column -->
+	<div class="col-xs-3">
+	</div>
+
+	<!-- Guide Registration Information -->
+	<div class="col-xs-9">
+		<div class="row">
+			<h3>スケジュール一覧(tourist)</h3>
+		</div>
+		<div class="row">
+			<table class="table table-bordered table-inberse">
+				<thead>
+					<th width = "200">日時</th>
+					<th width = "200">氏名(ガイド)</th>
+					<th width = "200">エリア</th>
+					<th width = "200">ステータス</th>
+				</thead>
+				<% @schedules.each do |schedule| %>
+					<tbody>
+						<td>
+							<%= link_to tourist_schedule_path(schedule.id) do %>
+								<%= schedule.plan %>
+							<% end %>
+						</td>
+						<td>
+								<%= schedule.guide.first_name %> <%= schedule.guide.last_name %>
+						</td>
+						<td><%= schedule.guide.region %></td>
+						<td><%= schedule.status %></td>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

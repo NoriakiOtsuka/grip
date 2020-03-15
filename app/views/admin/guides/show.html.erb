@@ -1,0 +1,77 @@
+<div class="container">
+	<div class="row">
+		<h3>ガイド詳細(admin)</h3>
+	</div>
+	<div class="row">
+		<h4>登録情報</h4>
+		<%= form_for(@guide) do |f| %>
+			<div>
+				<%= attachment_image_tag(@guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">ガイドID</td>
+					<td>
+						<%= @guide.id %>
+						<% if @guide.status == "有効" %>
+							<span class="label label-success">有効会員</span>
+						<% else %>
+							<span class="label label-success">退会会員</span>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td class="info">氏名</td>
+					<td><%= @guide.first_name %> <%= @guide.last_name %></td>
+				</tr>
+				<tr>
+					<td class="info">生年月日</td>
+					<td><%= @guide.birthday %></td>
+				</tr>
+				<tr>
+					<td class="info">性別</td>
+					<td><%= @guide.gender %></td>
+				</tr>
+				<tr>
+					<td class="info">住所</td>
+					<td><%= @guide.address %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= @guide.phone %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= @guide.email %></td>
+				</tr>
+				<tr>
+					<td class="info">地域</td>
+					<td><%= @guide.region %>
+					</td>
+				</tr>
+			</table>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= link_to "編集する", edit_admin_guide_path, class: "btn btn-primary btn-lg center-block" %>
+	</div>
+
+	<div class="row">
+		<h3>コメント</h3>
+		<div>
+			<h4>List of Comment</h4>
+			<% @guide.tourist_comments.each do |comment| %>
+				<div class="comment-body bb">
+					<div class="comment-text">
+						<div class="comment-author clearfix">
+							<span class="comment-meta">
+								<%= comment.tourist.last_name %> <%= comment.tourist.first_name %> <%= comment.created_at.strftime('%Y/%m/%d') %>
+							</span>
+								<%= link_to "Destroy", tourist_tourist_comments_path(comment), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_tourist_#{comment.id}" %>
+						</div>
+						<div class="comment-entry"><%= comment.comment %></div>
+					</div>
+				</div>
+				<% end %>
+		</div>
+	</div>

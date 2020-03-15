@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="row">
+		<h3>観光客詳細(admin)</h3>
+	</div>
+	<div class="row">
+		<h4>登録情報</h4>
+		<%= form_for(@tourist) do |f| %>
+			<div>
+				<%= attachment_image_tag(@tourist, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			</div>
+			<table class="table table-bordered table-inverse">
+				<tr>
+					<td class="info">観光客ID</td>
+					<td>
+						<%= @tourist.id %>
+						<% if @tourist.status == "有効" %>
+							<span class="label label-success">有効会員</span>
+						<% else %>
+							<span class="label label-success">退会会員</span>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td class="info">氏名</td>
+					<td><%= @tourist.last_name %> <%= @tourist.first_name %></td>
+				</tr>
+				<tr>
+					<td class="info">生年月日</td>
+					<td><%= @tourist.birthday %></td>
+				</tr>
+				<tr>
+					<td class="info">性別</td>
+					<td><%= @tourist.gender %></td>
+				</tr>
+				<tr>
+					<td class="info">国籍</td>
+					<td><%= @tourist.nationality %></td>
+				</tr>
+				<tr>
+					<td class="info">電話番号</td>
+					<td><%= @tourist.phone %></td>
+				</tr>
+				<tr>
+					<td class="info">メールアドレス</td>
+					<td><%= @tourist.email %></td>
+				</tr>
+			</table>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= link_to "編集する", edit_admin_tourist_path, class: "btn btn-primary btn-lg center-block" %>
+	</div>
+</div>

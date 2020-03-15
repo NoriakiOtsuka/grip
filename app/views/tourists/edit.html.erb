@@ -1,0 +1,58 @@
+<div class="container">
+	<%= form_for(@tourist) do |f| %>
+
+		<!-- Tourist Pfofile -->
+		<div class="col-xs-3">
+			<div>
+				<%= f.attachment_field :profile_image, class: "profile_image" %>
+			</div>
+			<section>
+				<p>Introduction</p>
+				<h5><%= f.text_area :introduction, class: "introduction" %></h5>
+			</section>
+		</div>
+
+		<!-- Tourist Registration Information -->
+		<div class="col-xs-9">
+			<div class="row">
+				<h3>マイページ(tourist)</h3>
+			</div>
+			<div class="row">
+				<h4>登録情報編集</h4>
+				<table class="table table-bordered table-inverse">
+					<tr>
+						<td class="info">氏名</td>
+						<td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %> <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+					</tr>
+					<tr>
+						<td class="info">生年月日</td>
+						<td><%= f.date_field :birthday, autofocus: true, autocomplete: "birthday" %></td>
+					</tr>
+					<tr>
+						<td class="info">性別</td>
+						<td>
+							<%= f.radio_button :gender, :male, autofocus: true %>男性
+							<%= f.radio_button :gender, :female, autofocus: true %>女性
+						</td>
+					</tr>
+					<tr>
+						<td class="info">国籍</td>
+						<td><%= f.text_field :nationality, autofocus: true, autocomplete: "nationality" %></td>
+					</tr>
+					<tr>
+						<td class="info">電話番号</td>
+						<td><%= f.text_field :phone, autofocus: true, autocomplete: "phone" %></td>
+					</tr>
+					<tr>
+						<td class="info">メールアドレス</td>
+						<td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+					</tr>
+				</table>
+				<div>
+					<%= f.submit "編集内容を保存する", class: "btn btn-primary btn-lg center-block" %>
+					<%= link_to "退会する", tourist_delete_me_path, class: "btn btn-warning btn-lg center-block" %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
