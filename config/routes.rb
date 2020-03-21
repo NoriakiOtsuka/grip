@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'tourists/top'
   get 'guides/top' #変更あるかも
   get 'homes/about'
@@ -40,12 +41,15 @@ Rails.application.routes.draw do
 		resources :guides, only: [:index, :show]
 		resources :schedules, only: [:index, :show] do
 			resource :tourist_comments, only: [:create]
+			resource :chats, only: [:create]
 		end
 		resource :tourist_comments, only: [:destroy]
 	end
 	namespace :guide do
 		resources :guides, only: [:index, :show, :create]
-		resources :schedules, only: [:index, :show, :create, :update]
+		resources :schedules, only: [:index, :show, :create, :update] do
+			resource :chats, only: [:create]
+		end
 	end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

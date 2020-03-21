@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_060307) do
+ActiveRecord::Schema.define(version: 2020_03_18_063159) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 2020_03_11_060307) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "tourist_id"
+    t.integer "guide_id"
+    t.integer "schedule_id"
+    t.text "message", null: false
+    t.boolean "sender", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guide_id"], name: "index_chats_on_guide_id"
+    t.index ["schedule_id"], name: "index_chats_on_schedule_id"
+    t.index ["tourist_id"], name: "index_chats_on_tourist_id"
   end
 
   create_table "guides", force: :cascade do |t|
@@ -39,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_060307) do
     t.text "address", null: false
     t.string "phone", null: false
     t.text "introduction"
-    t.string "region"
+    t.integer "region", default: 0
     t.string "profile_image_id"
     t.integer "status", default: 0, null: false
     t.index ["email"], name: "index_guides_on_email", unique: true

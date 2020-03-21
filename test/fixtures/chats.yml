@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tourist: one
+  guide: one
+  schedule: one
+  message: MyText
+
+two:
+  tourist: two
+  guide: two
+  schedule: two
+  message: MyText

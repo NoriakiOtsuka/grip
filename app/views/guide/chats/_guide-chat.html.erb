@@ -1,0 +1,20 @@
+<div>
+	<h4>List of Chat</h4>
+	<% chats.each do |chat| %>
+		<div class="chat-body bb">
+			<div class="chat-text">
+				<% if chat.sender %>
+					<span class="chat-meta">
+						<%= chat.created_at.strftime('%-m/%-d %-H:%M') %>
+					</span>
+					<div class="chat-entry" style="text-align: left;"><%= chat.message %></div>
+				<% else %>
+					<span class="chat-meta">
+						<%= chat.created_at.strftime('%-m/%-d %-H:%M') %>
+					</span>
+					<div class="chat-entry" style="text-align: right;"><%= chat.message %></div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

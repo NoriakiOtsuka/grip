@@ -9,6 +9,8 @@ class Tourist::SchedulesController < ApplicationController
 		@guide = @schedule.guide
 
 		@comment = TouristComment.new
-		@comments = TouristComment.all
+
+		@chat = Chat.new
+		@chats = @schedule.chats
 	end
 end

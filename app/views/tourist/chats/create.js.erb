@@ -1,0 +1,2 @@
+$("textarea").val("");
+$(".chat_<% @chat.id %>").html("<%= j(render 'tourist/chats/tourist-chat', chats: @chats) %>")

@@ -6,6 +6,7 @@ class Tourist < ApplicationRecord
 
 	has_many :schedules
 	has_many :tourist_comments
+	has_many :chats
 
 	attachment :profile_image, destroy: false
 

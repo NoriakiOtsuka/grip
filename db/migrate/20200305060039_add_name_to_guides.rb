@@ -7,7 +7,7 @@ class AddNameToGuides < ActiveRecord::Migration[5.2]
 		add_column :guides, :address, :text
 		add_column :guides, :phone, :string
 		add_column :guides, :introduction, :text
-		add_column :guides, :region, :string
+		add_column :guides, :region, :integer, default: 0
 		add_column :guides, :profile_image_id, :string
 		add_column :guides, :status, :integer, default: 0
 

@@ -2,12 +2,14 @@
 
 	<!-- Search Column -->
 	<div class="col-xs-3">
+		<!-- Guide search (partial template) -->
+		<%= render 'guide/guides/guide-search' %>
 	</div>
 
 	<!-- Guide Registration Information -->
 	<div class="col-xs-9">
 		<div class="row">
-			<h3>ガイド一覧(全<%= @guides.count %>人)(guide)</h3>
+			<h3>ガイド一覧(guide)</h3>
 		</div>
 		<div>
 			<% @guides.each do |guide| %>

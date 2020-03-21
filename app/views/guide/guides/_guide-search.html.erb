@@ -1,0 +1,7 @@
+<div class="row">
+	<section>検索</section>
+	<%= form_tag(guide_guides_path, method: :get) do %>
+		<%= select :guide, :region, Guide.regions.keys %>
+		<%= submit_tag "検索" %>
+	<% end %>
+</div>

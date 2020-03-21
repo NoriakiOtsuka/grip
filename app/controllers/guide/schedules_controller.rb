@@ -6,6 +6,8 @@ class Guide::SchedulesController < ApplicationController
 	def show
 		@schedule = Schedule.find(params[:id])
 		@tourist = @schedule.tourist #schedule のもとでのtouristとする
+		@chat = Chat.new
+		@chats = @schedule.chats
 	end
 
 	def create #追記する

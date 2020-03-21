@@ -1,6 +1,10 @@
 class Admin::GuidesController < ApplicationController
 	def index
-		@guides = Guide.all
+		if params[:region] == "0" #view/applicationでdefault 0 (region: 0) を指定した
+			@guides = Guide.all
+		else
+			@guides = Guide.where(region: guide_search_params[:region])
+		end
 	end
 
 	def show
@@ -23,5 +27,8 @@ class Admin::GuidesController < ApplicationController
 	private
 	def guide_params
 		params.require(:guide).permit(:first_name, :last_name, :birthday, :gender, :address, :phone, :email, :profile_image, :introduction, :region, :status)
+	end
+	def guide_search_params
+		params.require(:guide).permit(:region)
 	end
 end

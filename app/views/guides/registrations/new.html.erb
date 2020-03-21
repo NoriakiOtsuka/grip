@@ -62,7 +62,7 @@
 
   <div class="field">
     <%= f.label :region %><br />
-    <%= f.text_field :region, autofocus: true, autocomplete: "region" %>
+    <%= f.select :region, Guide.regions.keys, class: "region" %>
   </div>  
 
   <div class="actions">

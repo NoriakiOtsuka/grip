@@ -42,7 +42,7 @@
 				</tr>
 				<tr>
 					<td class="info">地域</td>
-					<td><%= f.text_field :region, autocomplete: "region" %>
+					<td><%= f.select :region, Guide.regions.keys, class: "region" %>
 					</td>
 				</tr>
 				<tr>
