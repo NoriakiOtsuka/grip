@@ -4,11 +4,15 @@
 	</div>
 
 	<!-- Guide information (partial template) -->
-	<%= render 'guide/guides/guide-info', guide: @guide %>
+	<div class="row">
+		<%= render 'guide/guides/guide-info', guide: @guide %>
+	</div>
 
 	<div class="row">
 		<%= link_to "ガイド一覧に戻る", guide_guides_path, class: "btn btn-primary btn-lg center-block" %>
 	</div>
 	<!-- List of comments from tourist (partial template) -->
-	<%= render 'guide/guides/tourist-comment-list', guide: @guide %>
+	<div class="row">
+		<%= render 'guide/guides/tourist-comment-list', guide: @guide %>
+	</div>
 </div>

@@ -4,20 +4,23 @@
 	</div>
 
 	<!-- Guide information (partial template) -->
-	<%= render 'guide/guides/guide-info', guide: @guide %>
+	<div class="row">
+		<%= render 'guide/guides/guide-info', guide: @guide %>
+	</div>
 
 	<div class="row">
 		<%= link_to "ガイド一覧に戻る", tourist_guides_path, class: "btn btn-primary btn-lg center-block" %>
-
-		
 		<%= form_for(@schedule, url: {controller: "guide/schedules", action: :create}) do |f| %>
 			<div>
-			<h5>希望日時選択</h5>
-			<%= f.date_field :plan %>
-			<%= f.hidden_field :guide_id, :value => @guide.id %>
-			<%= f.submit "ガイドを依頼する", class: "btn btn-primary btn-lg center-block" %>
+				<h5>希望日時選択</h5>
+				<%= f.date_field :plan %>
+				<%= f.hidden_field :guide_id, :value => @guide.id %>
+				<%= f.submit "ガイドを依頼する", class: "btn btn-primary btn-lg center-block" %>
+			</div>
 		<% end %>
 	</div>
 	<!-- List of comments from tourist (partial template) -->
-	<%= render 'guide/guides/tourist-comment-list', guide: @guide %>
+	<div class="row">
+		<%= render 'guide/guides/tourist-comment-list', guide: @guide %>
+	</div>
 </div>

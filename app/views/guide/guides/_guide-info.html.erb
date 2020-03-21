@@ -1,16 +1,15 @@
-<div class="row">
-	<section>
-		<h4><%= guide.first_name %> <%= guide.last_name %></h4>
-	</section>
-	<div>
-		<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
-	</div>
-	<section>
-		<p>Introduction</p>
-		<h5><%= guide.introduction %></h5>
-	</section>
-	<section>
-		<p>Region</p>
-		<h5><%= guide.region %></h5>
-	</section>
+<section>
+	<h4><%= guide.first_name %> <%= guide.last_name %></h4>
+</section>
+<div>
+	<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+	
 </div>
+<section>
+	<p>Introduction</p>
+	<h5><%= guide.introduction %></h5>
+</section>
+<section>
+	<p>Region</p>
+	<h5><%= guide.region %></h5>
+</section>

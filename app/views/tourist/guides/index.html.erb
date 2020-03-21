@@ -1,24 +1,27 @@
 <div class="container">
-
-	<!-- Search Column -->
-	<div class="col-xs-3">
-		<!-- Guide search (partial template) -->
-		<%= render 'tourist/guides/guide-search' %>
-	</div>
-
-	<!-- Guide Registration Information -->
-	<div class="col-xs-9">
-		<div class="row">
-			<h3>ガイド一覧(全<%= @guides.count %>人)(tourist)</h3>
+	<div class="row">
+		<!-- Search Column -->
+		<div class="col-xs-3">
+			<!-- Guide search (partial template) -->
+			<div class="row">
+				<%= render 'tourist/guides/guide-search' %>
+			</div>
 		</div>
-		<div>
-			<% @guides.each do |guide| %>
-				<%= link_to tourist_guide_path(guide) do %>
-					<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
-					<%= guide.first_name %><%= guide.last_name %>
+
+		<!-- Guide Registration Information -->
+		<div class="col-xs-9">
+			<div class="row">
+				<h3>ガイド一覧(全<%= @guides.count %>人)(tourist)</h3>
+			</div>
+			<div>
+				<% @guides.each do |guide| %>
+					<%= link_to tourist_guide_path(guide) do %>
+						<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+						<%= guide.first_name %><%= guide.last_name %>
+					<% end %>
+					<%= guide.region %>
 				<% end %>
-				<%= guide.region %>
-			<% end %>
+			</div>
 		</div>
 	</div>
 </div>
