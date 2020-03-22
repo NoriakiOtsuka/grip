@@ -3,7 +3,7 @@
 	<!-- Tourist Pfofile -->
 	<div class="col-xs-3">
 		<div>
-			<%= attachment_image_tag(current_tourist, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+			<%= attachment_image_tag(current_tourist, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
 		</div>
 		<section>
 			<h4><%= current_tourist.last_name %> <%= current_tourist.first_name %></h4>

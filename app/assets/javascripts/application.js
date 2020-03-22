@@ -14,9 +14,30 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
+//= require turbolinks
 //= require moment
 //= require moment/ja.js
 //= require fullcalendar
 //= require fullcalendar/lang/ja
 //= require bootstrap-sprockets
+//= require_tree ../../../app/assets/javascripts/.
 //= require_tree .
+
+
+$("document").ready(function(){
+	$(".theTarget").skippr();
+});
+
+$(".theTarget").skippr({
+	transition: 'fade',
+	speed: 1000,
+	easing: 'easeOutQuart',
+	navType: 'block',
+	childrenElementType: 'div',
+	arrows: true,
+	autoPlay: false,
+	autoPlayDuration: 5000,
+	keyboardOnAlways: true,
+	hidePrevious: false
+});

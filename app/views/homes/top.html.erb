@@ -1,2 +1,36 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="home-container">
+	<div class="row">
+		<h2><p>Grip</p></h2>
+		<P>For you, who want to grip a trip more than just trip</P>
+		<P>tripでは得られない、一歩先の旅をつかみたいあなたへ</P>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="box">
+				<div><h4>Tourist Section</h4></div>
+				<div>
+					<section>会員の方はこちらから</section>
+					<div class="btn btn-primary"><%= link_to 'Tourist Log In', new_tourist_session_path, :style=>"color:white;"  %></div>
+				</div>
+				<div>
+					<section>会員登録はこちらから</section>
+					<div class="btn btn-success"><%= link_to 'Tourist Sign Up', new_tourist_registration_path, :style=>"color:white;"  %></div>
+				</div>
+				</div>
+			</div>
+		<div class="col-xs-6">
+			<div class="box">
+				<div><h4>Guide Section</h4></div>
+				<div>
+					<section>会員の方はこちらから</section>
+					<div class="btn btn-primary"><%= link_to 'Guide Log In', new_guide_session_path, :style=>"color:white;" %></div>
+				</div>
+				<div>
+					<section>会員登録はこちらから</section>
+					<div class="btn btn-success"><%= link_to 'Guide Sign Up', new_guide_registration_path, :style=>"color:white;" %></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
