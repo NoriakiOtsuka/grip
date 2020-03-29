@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 		registrations: "guides/registrations" 
 	}
 	root to: 'homes#top'
+	get "blogs/search" => "blogs#search", as: "blogs_search"
 	get "tourists/:id/delete_me" => "tourists#delete_me", as: "tourist_delete_me"
 	put "tourists/:id/delete_me" => "tourists#withdraw", as: "tourist_withdraw"
 
@@ -31,6 +32,9 @@ Rails.application.routes.draw do
 
 	resources :tourists, only: [:show, :edit, :update]
 	resources :guides, only: [:show, :edit, :update]
+	resources :blogs, only: [:index, :new, :create, :destroy] do
+		resource :favorites, only: [:create, :destroy]
+	end
 	
 	namespace :admin do
 		resources :tourists, only: [:index, :show, :edit, :update]

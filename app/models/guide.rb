@@ -7,6 +7,12 @@ class Guide < ApplicationRecord
 	has_many :schedules
 	has_many :tourist_comments, dependent: :destroy
 	has_many :chats
+	has_many :blogs
+
+	has_many :favorites, dependent: :destroy
+ 	def favorited_by_guide?(guide) #guide_signed_in?時の定義 /blogs/_favorite.html.erb
+ 		self.favorites.where(guide_id: guide.id).exists?
+ 	end
 
 	attachment :profile_image, destroy: false
 

@@ -1,3 +1,0 @@
-before_action :authenticateの一括適用のため
-
-https://qiita.com/ryuuuuuuuuuu/items/bf7e2ea18ef29254b3dd

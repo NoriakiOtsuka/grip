@@ -1,0 +1,23 @@
+<p><h3 style="text-align: center;">Search</h3></p>
+<%= form_tag(blogs_search_path, method: :get) do %>
+  <div>
+  	<%= label_tag "tourist ※" %></br>
+  	<%= text_field_tag :tourist_name, params[:tourist_name] %>
+  </div>
+  <div>
+  	<%= label_tag "guide ※" %></br>
+  	<%= text_field_tag :guide_name, params[:guide_name] %>
+  </div>
+  <div>
+  	<%= label_tag "title" %></br>
+  	<%= text_field_tag :title, params[:title] %>
+  </div>
+  <div>
+  	<%= label_tag "region" %></br>
+  	<%= select_tag :region, options_for_select(Blog.regions), include_blank: true %>
+  </div>
+  <p>※Both choice is impossible</p>
+  <div>
+  	<%= submit_tag "Click here", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

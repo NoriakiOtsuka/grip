@@ -7,9 +7,16 @@ class Tourist < ApplicationRecord
 	has_many :schedules
 	has_many :tourist_comments
 	has_many :chats
+	has_many :blogs
+
+	has_many :favorites, dependent: :destroy
+ 	def favorited_by_tourist?(tourist) #tourist_signed_in?時の定義 /blogs/_favorite.html.erb
+ 		self.favorites.where(tourist_id: tourist.id).exists?
+ 	end
 
 	attachment :profile_image, destroy: false
 
 	enum gender: {male: 0, female: 1}
 	enum status: {有効: 0, 退会: 1}
+
 end

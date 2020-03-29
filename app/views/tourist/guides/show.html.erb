@@ -1,24 +1,29 @@
 <div class="container">
 	<div class="row">
-		<h3>ガイド詳細(tourist)</h3>
+		<h3>Guide information</h3>
 	</div>
 
 	<!-- Guide information (partial template) -->
 	<div class="row">
-		<%= render 'guide/guides/guide-info', guide: @guide %>
+		<div class="col-xs-6">
+			<div>
+				<%= render 'guide/guides/guide-info', guide: @guide %>
+			</div>
+		</div>
+
+		<div class="col-xs-6">
+			<%= form_for(@schedule, url: {controller: "guide/schedules", action: :create}) do |f| %>
+				<div>
+					<h5>希望日時選択</h5>
+					<%= f.date_field :plan %>
+					<%= f.hidden_field :guide_id, :value => @guide.id %>
+					<%= f.submit "ガイドを依頼する", class: "btn btn-primary btn-lg center-block" %>
+				</div>
+			<% end %>
+			<%= link_to "ガイド一覧に戻る", tourist_guides_path, class: "btn btn-primary btn-lg center-block" %>
+		</div>
 	</div>
 
-	<div class="row">
-		<%= link_to "ガイド一覧に戻る", tourist_guides_path, class: "btn btn-primary btn-lg center-block" %>
-		<%= form_for(@schedule, url: {controller: "guide/schedules", action: :create}) do |f| %>
-			<div>
-				<h5>希望日時選択</h5>
-				<%= f.date_field :plan %>
-				<%= f.hidden_field :guide_id, :value => @guide.id %>
-				<%= f.submit "ガイドを依頼する", class: "btn btn-primary btn-lg center-block" %>
-			</div>
-		<% end %>
-	</div>
 	<!-- List of comments from tourist (partial template) -->
 	<div class="row">
 		<%= render 'guide/guides/tourist-comment-list', guide: @guide %>

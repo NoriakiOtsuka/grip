@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <!-- Blog search -->
+    <div class="col-xs-3">
+      <div class="row">
+        <div class="col-xs-10">
+          <%= render 'blogs/blog-search' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+    <h2>Blog</h2>
+      <% @blogs.each do |blog| %>
+        <div>
+          <div><h3><%= blog.title %></h3></div>
+          <div><h4><%= blog.region %></h4></div>
+          <div>
+            <% if blog.sender %>
+              <h4><%= blog.tourist.last_name %> <%= blog.tourist.first_name %></h4>
+            <% else %>
+              <h4><%= blog.guide.first_name %> <%= blog.guide.last_name %></h4>
+            <% end %>
+            </div>
+          <div style="text-align: right;"><h5><%= blog.created_at.strftime('%Y/%m/%d %-H:%M') %></h5></div>
+          <div style="text-align: center;"><%= attachment_image_tag(blog, :image, :width => '400' ) %></div>
+          <div><h4><%= blog.body %></h4></div>
+
+          <!-- Blog favorite (partial template) -->
+          <div id="blog_<%= blog.id %>">
+            <%= render 'blogs/favorite', blog: blog %>
+          </div>
+        </div>
+      <% end %>
+    <%= paginate @blogs, class: "paginate" %>
+    </div>
+  </div>
+</div>

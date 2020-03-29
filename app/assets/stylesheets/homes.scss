@@ -10,8 +10,30 @@
 	/* background-repeat: no-repeat; */
 }
 
+.home-text {
+	margin-top: 50px;
+	margin-left: 20px;
+	padding: 4px;
+	background-position: center;
+	background-color: #f0f8ff40;
+}
+
 .box {
-	padding: 100px;
+	padding: 40px;
+	background-position: center;
+	background-color: #f0f8ff40;
+}
+
+.about-container {
+ 	height: 570px;
+ }
+
+ .theTarget {
+ 	height: 400px;
+ }
+
+.about-box {
+	margin-top: -70px;
 	background-position: center;
 	background-color: #f0f8ff40;
 }

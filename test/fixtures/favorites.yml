@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tourist_id: 1
+  guide_id: 1
+  blog_id: 1
+
+two:
+  tourist_id: 1
+  guide_id: 1
+  blog_id: 1

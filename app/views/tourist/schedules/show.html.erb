@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-9">
 			<div class="row">
-				<h3>スケジュール詳細(tourist)</h3>
+				<h3>Schedule detail</h3>
 				<div>
 					<% if @schedule.status == "依頼中" %>
 						<h4><%= @guide.first_name %> <%= @guide.last_name %>さんへ依頼中です。</h4>
@@ -15,49 +15,56 @@
 			</div>
 
 			<div class="row">
-				<div>予定日時<%= @schedule.plan %></div>
+				<div>Scheduled date:<%= @schedule.plan %></div>
 				<%= form_for(@guide) do |f| %>
-					<div>
-						<%= attachment_image_tag(@guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+					<!-- Guide information (partial template) -->
+					<div class="col-xs-9">
+						<div>
+							<%= render 'guide/guides/guide-info', guide: @guide %>
+						</div>
 					</div>
-					<section>
-						<p>Introduction</p>
-						<h5><%= @guide.introduction %></h5>
-					</section>
-					<table class="table table-bordered table-inverse">
-						<tr>
-							<td class="info">性別</td>
-							<td><%= @guide.gender %></td>
-						</tr>
-						<tr>
-							<td class="info">地域</td>
-							<td><%= @guide.region %></td>
-						</tr>
-						<tr>
-							<td class="info">電話番号</td>
-							<td><%= @guide.phone %></td>
-						</tr>
-						<tr>
-							<td class="info">メールアドレス</td>
-							<td><%= @guide.email %></td>
-						</tr>
-					</table>
-				<% end %>
-			</div>
-
-			<div class="row">
-				<%= link_to "一覧へ戻る", tourist_schedules_path, class: "btn btn-primary btn-lg center-block" %>
-			</div>
-
-			<div class="row">
-				<h3>コメント</h3>
-				<div>
-					<h4>New Comment</h4>
-					<%= form_for(@comment, url: tourist_schedule_tourist_comments_path(@schedule), method: :post) do |f| %>
-						<%= f.text_area :comment %>
-						<%= f.submit "send" %>
+				</div>
+				<div class="row">
+					<div class="col-xs-9">
+						<table class="table table-bordered table-inverse">
+							<tr>
+								<td width = "200" class="info">Gender</td>
+								<td><%= @guide.gender %></td>
+							</tr>
+							<tr>
+								<td width = "200" class="info">Region</td>
+								<td><%= @guide.region %></td>
+							</tr>
+							<tr>
+								<td width = "200" class="info">Phone number</td>
+								<td><%= @guide.phone %></td>
+							</tr>
+							<tr>
+								<td width = "200" class="info">E-mail</td>
+								<td><%= @guide.email %></td>
+							</tr>
+						</table>
 					<% end %>
 				</div>
+			</div>
+
+			<div class="row">
+				<%= link_to "Back", tourist_schedules_path, class: "btn btn-primary btn-lg center-block" %>
+			</div>
+
+			<div class="row">
+				<h3>Comment</h3>
+				<div>
+					<h4>New Comment</h4>
+					<div class="col-xs-4">
+						<%= form_for(@comment, url: tourist_schedule_tourist_comments_path(@schedule), method: :post) do |f| %>
+							<%= f.text_area :comment, size: "40×5" %>
+							<%= f.submit "Send", class: "btn btn-primary btn-block" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
 				<div>
 					<h4>List of Comment</h4>
 					<% @guide.tourist_comments.each do |comment| %>
@@ -81,7 +88,7 @@
 
 		<div class="col-xs-3">
 			<div class="row">
-				<h3>チャット</h3>
+				<h3>Chat</h3>
 				<!-- Chat list (partial template) -->
 				<div class="chat_<% @chat.id %>">
 					<%= render "tourist/chats/tourist-chat", chats: @chats %>
@@ -90,7 +97,7 @@
 					<h4>New Chat</h4>
 					<%= form_with model: [@schedule, @chat], url: tourist_schedule_chats_path(@schedule), data: {remote: true} do |f| %>
 						<%= f.text_area :message, size: "40×5" %>
-						<%= f.submit "send" %>
+						<%= f.submit "Send", class: "btn btn-primary btn-block" %>
 					<% end %>
 				</div>
 			</div>

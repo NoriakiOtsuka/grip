@@ -12,6 +12,7 @@
   <header class="navbar navbar-inverse">
     <div class="container">
       <nav>
+        <img><%= image_tag("logo.png") %></img>
         <ul class="nav navbar-nav navbar-right">
           <!-- 管理者 ログイン -->
           <% if admin_signed_in? %>
@@ -23,18 +24,21 @@
 
           <!-- 観光客 ログイン -->
           <% elsif tourist_signed_in? %>
+          <li><%= link_to ' Home', tourists_top_path, class: 'glyphicon glyphicon-home home' %></li>
           <li><%= link_to ' About', homes_about_path, class: 'glyphicon glyphicon-link about' %></li>
           <li><%= link_to ' My page', tourist_path(current_tourist), class: 'glyphicon glyphicon-user user' %></li>
           <li><%= link_to ' Log Out', destroy_tourist_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
 
           <!-- ガイド ログイン -->
           <% elsif guide_signed_in? %>
+          <li><%= link_to ' Home', guides_top_path, class: 'glyphicon glyphicon-home home' %></li>
           <li><%= link_to ' My page', guide_path(current_guide), class: 'glyphicon glyphicon-user user' %></li>
           <li><%= link_to ' about', homes_about_path, class: 'glyphicon glyphicon-link about' %></li>
           <li><%= link_to ' Log Out', destroy_guide_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
 
           <!-- 管理者, 観光客, ガイド ログアウト -->
           <% else %>
+          <li><%= link_to ' Home', root_path, class: 'glyphicon glyphicon-home home' %></li>
           <li><%= link_to ' About', homes_about_path, class: 'glyphicon glyphicon-link link' %></li>
           <li><%= link_to ' Tourist Log In', new_tourist_session_path, class: 'glyphicon glyphicon-user user' %></li>
           <li><%= link_to ' Guide Log In', new_guide_session_path, class: 'glyphicon glyphicon-flag flag' %></li>

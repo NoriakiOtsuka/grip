@@ -1,15 +1,13 @@
-<section>
+<div class="card-header">
 	<h4><%= guide.first_name %> <%= guide.last_name %></h4>
-</section>
-<div>
-	<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
-	
 </div>
-<section>
-	<p>Introduction</p>
-	<h5><%= guide.introduction %></h5>
-</section>
-<section>
-	<p>Region</p>
-	<h5><%= guide.region %></h5>
-</section>
+<div>
+	<div class="col-xs-5">
+		<%= attachment_image_tag(guide, :profile_image, :fill, 150, 150, fallback: "no_image.jpg") %>
+	</div>
+	<div class="col-xs-7">
+		<p>Introduction</p>
+		<P><%= guide.introduction %></P>
+		<p>地域：<%= guide.region %></P>
+	</div>
+</div>

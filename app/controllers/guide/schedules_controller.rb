@@ -10,7 +10,7 @@ class Guide::SchedulesController < ApplicationController
 		@chats = @schedule.chats
 	end
 
-	def create #追記する
+	def create
 		@schedule = Schedule.new(schedule_params) #guide.idは tourist/guides/showよりhiddenで入手
 		@schedule.tourist_id = current_tourist.id #tourist のログイン時の操作によるため
 		if @schedule.save
@@ -20,7 +20,7 @@ class Guide::SchedulesController < ApplicationController
 		end
 	end
 
-	def update #追記する
+	def update
 		@schedule = Schedule.find(params[:id])
 		if params[:schedule][:status] == "実施予定"
 			@schedule.status = "実施予定"

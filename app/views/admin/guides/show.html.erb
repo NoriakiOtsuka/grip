@@ -6,7 +6,7 @@
 		<h4>登録情報</h4>
 		<%= form_for(@guide) do |f| %>
 			<div>
-				<%= attachment_image_tag(@guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
+				<%= attachment_image_tag(@guide, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
 			</div>
 			<table class="table table-bordered table-inverse">
 				<tr>

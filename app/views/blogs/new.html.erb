@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-3 col-xs-6">
+			<h2>New Blog</h2>
+			<%= form_for(@blog, url: blogs_path) do |f| %>
+				<div><%= f.text_field :title, placeholder:"title" %></div>
+				<div><%= f.select :region, Blog.regions.keys %></div>
+				<div><%= f.attachment_field :image %></div>
+				<div><%= f.text_area :body, class:"form-control", placeholder:"body" %></div>
+				<div><%= f.submit "send", class: "btn btn-primary btn-block" %></div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+</div>

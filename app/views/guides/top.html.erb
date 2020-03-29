@@ -1,28 +1,44 @@
 <div class="container">
 	<div class="row">
-		<!-- Search Column -->
 		<div class="col-xs-3">
 			<!-- Guide search (partial template) -->
 			<div class="row">
-				<%= render 'guide/guides/guide-search' %>
+				<div class="col-xs-10">
+					<%= render 'guide/guides/guide-search' %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10">
+					<p><h3 style="text-align: center;">Information</h3></p>
+					<h4><%= link_to "Check your schedule", guide_schedules_path, class: "btn btn-danger btn-block" %></h4>
+					<h4><%= link_to "Blog", blogs_path, class: "btn btn-success btn-block" %></h4>
+				</div>
 			</div>
 		</div>
 
 		<!-- Guide Registration Information -->
 		<div class="col-xs-9">
 			<div class="row">
-				<h4><%= link_to "スケジュールの確認", guide_schedules_path %></h4>
+				<h3><%= @guides.count %> Guide register</h3>
 			</div>
-			<div class="row">
-				<h3>ガイド一覧(全<%= @guides.count %>人)</h3>
-			</div>
-			<div>
+			<div class="card-deck">
 				<% @guides.each do |guide| %>
-					<%= link_to guide_guide_path(guide) do %>
-						<%= attachment_image_tag(guide, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
-						<%= guide.first_name %><%= guide.last_name %>
-					<% end %>
-					<%= guide.region %>
+					<div class="card">
+						<div class="card-img-top">
+							<%= link_to guide_guide_path(guide) do %>
+								<%= attachment_image_tag(guide, :profile_image, :fill, 150, 150, fallback: "no_image.jpg") %>
+							<% end %>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								氏名：
+								<%= link_to guide_guide_path(guide) do %>
+									<%= guide.first_name %> <%= guide.last_name %>
+								<% end %>
+							</li>
+							<li class="list-group-item">地域： <%= guide.region %></li>
+						</ul>
+					</div>
 				<% end %>
 			</div>
 		</div>

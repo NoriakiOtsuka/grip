@@ -1,0 +1,5 @@
+if (location.pathname == '/blogs') {
+  $("#blog_<%= @blog.id %>").html("<%= j(render 'blogs/favorite', blog: @blog ) %>")
+} else {
+  $("#blog_<%= @blog.id %>").html("<%= j(render 'blogs/favorite', blog: @blog ) %>")
+}

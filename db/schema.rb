@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_063159) do
+ActiveRecord::Schema.define(version: 2020_03_26_053912) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2020_03_18_063159) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "blogs", force: :cascade do |t|
+    t.integer "tourist_id"
+    t.integer "guide_id"
+    t.string "title", null: false
+    t.integer "region"
+    t.string "image_id"
+    t.text "body", null: false
+    t.boolean "sender", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "chats", force: :cascade do |t|
     t.integer "tourist_id"
     t.integer "guide_id"
@@ -35,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_03_18_063159) do
     t.index ["guide_id"], name: "index_chats_on_guide_id"
     t.index ["schedule_id"], name: "index_chats_on_schedule_id"
     t.index ["tourist_id"], name: "index_chats_on_tourist_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "tourist_id"
+    t.integer "guide_id"
+    t.integer "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "guides", force: :cascade do |t|

@@ -13,44 +13,44 @@
 		</div>
 
 		<!-- Tourist Registration Information -->
-		<div class="col-xs-9">
+		<div class="col-xs-7">
 			<div class="row">
-				<h3>マイページ(tourist)</h3>
+				<h3>My page</h3>
 			</div>
 			<div class="row">
-				<h4>登録情報編集</h4>
+				<h4>Registration information</h4>
 				<table class="table table-bordered table-inverse">
 					<tr>
-						<td class="info">氏名</td>
+						<td class="info">Name</td>
 						<td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %> <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
 					</tr>
 					<tr>
-						<td class="info">生年月日</td>
+						<td class="info">Birthday</td>
 						<td><%= f.date_field :birthday, autofocus: true, autocomplete: "birthday" %></td>
 					</tr>
 					<tr>
-						<td class="info">性別</td>
+						<td class="info">Gender</td>
 						<td>
-							<%= f.radio_button :gender, :male, autofocus: true %>男性
-							<%= f.radio_button :gender, :female, autofocus: true %>女性
+							<%= f.radio_button :gender, :male, autofocus: true %>Male
+							<%= f.radio_button :gender, :female, autofocus: true %>Female
 						</td>
 					</tr>
 					<tr>
-						<td class="info">国籍</td>
+						<td class="info">Nationality</td>
 						<td><%= f.text_field :nationality, autofocus: true, autocomplete: "nationality" %></td>
 					</tr>
 					<tr>
-						<td class="info">電話番号</td>
+						<td class="info">Phone number</td>
 						<td><%= f.text_field :phone, autofocus: true, autocomplete: "phone" %></td>
 					</tr>
 					<tr>
-						<td class="info">メールアドレス</td>
+						<td class="info">E-mail</td>
 						<td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
 					</tr>
 				</table>
-				<div>
-					<%= f.submit "編集内容を保存する", class: "btn btn-primary btn-lg center-block" %>
-					<%= link_to "退会する", tourist_delete_me_path, class: "btn btn-warning btn-lg center-block" %>
+				<div class="col-xs-offset-4 col-xs-4">
+					<%= f.submit "Save the change", class: "btn btn-primary btn-lg center-block" %>
+					<%= link_to "Withdraw", tourist_delete_me_path, class: "btn btn-warning btn-lg center-block" %>
 				</div>
 			</div>
 		</div>

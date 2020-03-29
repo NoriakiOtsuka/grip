@@ -1,73 +1,89 @@
-<h2>Sign up</h2>
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+    <div class="panel panel-success">
+      <div class="panel-heading"><h4>Guide Sign Up</h4></div>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.label :name %><br />
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+          <div class="field">
+            <%= f.label :birthday %><br />
+            <%= f.date_field :birthday, autofocus: true, autocomplete: "birthday" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :gender %><br />
+            <%= f.radio_button :gender, :male, autofocus: true %>
+            <%= f.label :male %>
+            <%= f.radio_button :gender, :female, autofocus: true %>
+            <%= f.label :female %>
+          </div>
+
+          <div class="field">
+            <%= f.label :address %><br />
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :phone %><br />
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :profile_image %><br />
+            <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "profile_image" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :introduction %><br />
+            <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :region %><br />
+            <%= f.select :region, Guide.regions.keys, class: "region" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.date_field :birthday, autofocus: true, autocomplete: "birthday" %>
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h4>Guide Log In page Access</h4></div>
+      <div class="panel-body">
+        <%= render "guides/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.radio_button :gender, :male, autofocus: true %>
-    <%= f.label :male %>
-    <%= f.radio_button :gender, :female, autofocus: true %>
-    <%= f.label :female %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile_image %><br />
-    <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "profile_image" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :introduction %><br />
-    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :region %><br />
-    <%= f.select :region, Guide.regions.keys, class: "region" %>
-  </div>  
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "guides/shared/links" %>
+</div>
