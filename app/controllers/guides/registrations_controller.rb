@@ -37,6 +37,9 @@ class Guides::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  def after_sign_up_path_for(resource)
+    tourists_top_path
+  end
 
   protected
 
