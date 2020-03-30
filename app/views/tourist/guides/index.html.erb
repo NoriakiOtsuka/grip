@@ -32,12 +32,12 @@
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
-								氏名：
+								Name：
 								<%= link_to tourist_guide_path(guide) do %>
 									<%= guide.first_name %> <%= guide.last_name %>
 								<% end %>
 							</li>
-							<li class="list-group-item">地域： <%= guide.region %></li>
+							<li class="list-group-item">Region： <%= guide.region %></li>
 						</ul>
 					</div>
 				<% end %>

@@ -19,4 +19,6 @@ class Tourist < ApplicationRecord
 	enum gender: {male: 0, female: 1}
 	enum status: {有効: 0, 退会: 1}
 
+	scope :get_by_tourist_name, -> (tourist_name) {where("first_name Like ? OR last_name Like ?", "%#{params[:tourist_name]}%", "%#{params[:tourist_name]}%").pluck(:id)}
+
 end

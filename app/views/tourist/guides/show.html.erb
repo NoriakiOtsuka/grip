@@ -14,13 +14,17 @@
 		<div class="col-xs-6">
 			<%= form_for(@schedule, url: {controller: "guide/schedules", action: :create}) do |f| %>
 				<div>
-					<h5>希望日時選択</h5>
+					<h5>Choose your preference day</h5>
 					<%= f.date_field :plan %>
 					<%= f.hidden_field :guide_id, :value => @guide.id %>
-					<%= f.submit "ガイドを依頼する", class: "btn btn-primary btn-lg center-block" %>
+					<%= f.submit "Ask for guidance", class: "btn btn-warning btn-lg center-block" %>
 				</div>
 			<% end %>
-			<%= link_to "ガイド一覧に戻る", tourist_guides_path, class: "btn btn-primary btn-lg center-block" %>
+			<div class="row">
+				<div class="col-xs-offset-3 col-xs-6">
+					<%= link_to "Back", tourist_guides_path, class: "btn btn-primary btn-lg center-block" %>
+				</div>
+			</div>
 		</div>
 	</div>
 

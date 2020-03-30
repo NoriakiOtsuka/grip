@@ -8,7 +8,6 @@ class FavoritesController < ApplicationController
 		else
 			favorite = current_guide.favorites.new(blog_id: @blog.id)
 		end
-		# binding.pry
 		favorite.save
 	end
 

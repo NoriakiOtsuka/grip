@@ -25,6 +25,8 @@ class Blog < ApplicationRecord
     						福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46, 沖縄県: 47
     					}
 
+  # scope :get_by_tourist_name, -> (tourist_name) {where("first_name Like ? OR last_name Like ?", "%#{params[:tourist_name]}%", "%#{params[:tourist_name]}%").pluck(:id)}
+
   scope :get_by_title, -> (title) {where("title Like ?", "%#{title}%")}
   scope :get_by_region, -> (region) {where(region: region)} 
 
