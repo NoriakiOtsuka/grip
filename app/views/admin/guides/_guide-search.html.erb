@@ -1,5 +1,10 @@
-<section>検索</section>
+<p><h3 style="text-align: center;">Search</h3></p>
 <%= form_tag(admin_guides_path, method: :get) do %>
-	<%= select :guide, :region, Guide.regions.keys %>
-	<%= submit_tag "検索" %>
+	<div>
+		<%= label_tag "region" %>
+		<%= select :guide, :region, Guide.regions.keys %>
+	</div>
+	<div>
+		<%= submit_tag "Click here", class: "btn btn-primary btn-block" %>
+	</div>
 <% end %>

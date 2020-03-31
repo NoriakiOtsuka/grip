@@ -34,10 +34,9 @@ class TouristsController < ApplicationController
 		@tourist = Tourist.find(params[:id])
 		@tourist.status = 1
 		@tourist.save
-		#sign_out
+		sign_out
 		redirect_to root_path
 	end
-
 
 	private
 	def tourist_params
