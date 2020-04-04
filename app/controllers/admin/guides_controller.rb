@@ -18,7 +18,7 @@ class Admin::GuidesController < ApplicationController
 	def update
 		@guide = Guide.find(params[:id])
 		if @guide.update(guide_params)
-			redirect_to admin_guides_path, notice: "successfully updated!"
+			render "show", notice: "successfully updated!"
 		else
 			render "edit"
 		end

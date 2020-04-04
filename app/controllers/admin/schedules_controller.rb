@@ -1,6 +1,6 @@
 class Admin::SchedulesController < ApplicationController
 	def show
-		@schedule = Schedule.find(params[:id]).order(plan: "DESC")
+		@schedule = Schedule.find(params[:id])
 		@tourist = @schedule.tourist
 		@guide = @schedule.guide
 	end

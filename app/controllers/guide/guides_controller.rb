@@ -1,6 +1,10 @@
 class Guide::GuidesController < ApplicationController
 	def index
-		@guides = Guide.where(region: guide_search_params[:region])
+		if params[:region] == "0" || "" #view/applicationでdefault 0 (region: 0) を指定した
+			@guides = Guide.all
+		else
+			@guides = Guide.where(region: guide_search_params[:region])
+		end
 	end
 
 	def show

@@ -14,7 +14,7 @@ class Admin::TouristsController < ApplicationController
 	def update
 		@tourist = Tourist.find(params[:id])
 		if @tourist.update(tourist_params)
-			redirect_to admin_tourists_path, notice: "successfully updated!"
+			render "show", notice: "successfully updated!"
 		else
 			render "edit"
 		end
